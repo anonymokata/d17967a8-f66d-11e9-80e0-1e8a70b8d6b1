@@ -14,6 +14,8 @@ Download and install via msi file from: https://nodejs.org/dist/v10.16.3/node-v1
 
 Once NodeJS is installed, install Mocha and Chai from the command prompt
 
-`npm install --global mocha`
+`npm install --global mocha chai`
 
-`npm install --global chai`
+From the directory you've checkout the repository to run :
+
+`npm install --save chai`
