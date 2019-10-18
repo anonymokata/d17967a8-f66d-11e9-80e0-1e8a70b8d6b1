@@ -41,7 +41,7 @@ describe('PencilTests', function() {
         Pencil.sharpen();
         Paper.append_content(Pencil.write(text_to_write.substring(Paper.get_contents().length)));
         expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do');
-    })
+    });
 
 
 });
