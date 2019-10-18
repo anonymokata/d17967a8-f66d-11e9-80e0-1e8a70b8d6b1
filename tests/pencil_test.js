@@ -38,13 +38,13 @@ describe('PencilTests', function() {
             switch(sharpen_iterator) {
                 case 2:
                     expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm');
-                    break
+                    break;
                 case 1:
                 case 0:
                     expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do');
+                    break;
             }
         }
     });
-
 
 });
