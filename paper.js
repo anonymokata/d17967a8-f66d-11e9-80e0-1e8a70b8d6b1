@@ -9,6 +9,10 @@ class Paper {
         this.contents = content;
     }
 
+    append_content(content) {
+        this.contents += content;
+    }
+
     get_contents() {
         return this.contents;
     }

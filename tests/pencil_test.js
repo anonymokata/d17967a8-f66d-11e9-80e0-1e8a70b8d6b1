@@ -10,29 +10,29 @@ describe('PencilTests', function() {
 
     it('handle degradation of pencil with lower case characters', function() {
         Pencil.set_durability(4);
-        Paper.set_contents(Paper.get_contents() + Pencil.write('test'));
+        Paper.append_content(Pencil.write('test'));
         expect(Paper.get_contents()).to.eql('test');
     });
 
     it('handle degradation of pencil with upper case characters', function() {
         Pencil.set_durability(4);
-        Paper.set_contents(Paper.get_contents() + Pencil.write('Test'));
+        Paper.append_content(Pencil.write('Test'));
         expect(Paper.get_contents()).to.eql('Tes');
     });
 
     it('handle degradation of pencil with space or return characters', function() {
         Pencil.set_durability(16);
-        Paper.set_contents(Paper.get_contents() + Pencil.write('Test Green\r\nRefactor'));
+        Paper.append_content(Pencil.write('Test Green\r\nRefactor'));
         expect(Paper.get_contents()).to.eql('Test Green\r\nRefa');
     });
 
     it('sharpen durability back to original state', function() {
         Pencil.set_durability(55);
         let text_to_write = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        Paper.set_contents(Paper.get_contents() + Pencil.write(text_to_write));
+        Paper.append_content(Pencil.write(text_to_write));
         expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do');
         Pencil.sharpen();
-        Paper.set_contents(Paper.get_contents() + Pencil.write(text_to_write.substring(Paper.get_contents().length)));
+        Paper.append_content(Pencil.write(text_to_write.substring(Paper.get_contents().length)));
         expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
     })
 
