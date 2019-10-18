@@ -5,6 +5,7 @@ class Pencil {
         let durability = 0;
         let original_durability = 0;
         let length = 0;
+        let eraser_durability = 0;
     }
 
     write (characters) {
@@ -40,6 +41,10 @@ class Pencil {
         this.length =  length;
     }
 
+    set_eraser_durability(durability) {
+        this.eraser_durability = durability;
+    }
+
     sharpen() {
         if (this.length > 0) {
             this.durability = this.original_durability;
@@ -48,6 +53,7 @@ class Pencil {
     }
 
     erase(contents, characters_to_erase) {
+        characters_to_erase = this.get_durable_characters_to_erase(characters_to_erase);
         let characters_location = contents.lastIndexOf(characters_to_erase);
         let characters_length = characters_to_erase.length;
         let spaces_to_add = '';
@@ -60,6 +66,14 @@ class Pencil {
             contents = contents.substring(0,characters_location) + spaces_to_add + contents.substring(characters_location + characters_length);
         }
         return contents;
+    }
+
+    get_durable_characters_to_erase(characters_to_erase) {
+        let characters = '';
+        if (this.eraser_durability > 0 && characters_to_erase.length > this.eraser_durability) {
+            characters = characters_to_erase.substr(-this.eraser_durability);
+        }
+        return characters;
     }
 }
 

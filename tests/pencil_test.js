@@ -47,12 +47,13 @@ describe('PencilTests', function() {
         }
     });
 
-    it('erases last occurrence of found character from paper, multiple times', function() {
+    it('erases last occurrence of found character from paper, multiple times with a degrading eraser', function() {
+        Pencil.set_eraser_durability(3)
         Paper.set_contents("How much wood, would a woodchuck chuck, if a woodchuck could chuck wood?");
         Paper.set_contents(Pencil.erase(Paper.get_contents(),'chuck'));
-        expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a woodchuck could       wood?');
+        expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a woodchuck could ch    wood?');
         Paper.set_contents(Pencil.erase(Paper.get_contents(),'chuck'));
-        expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a wood      could       wood?');
+        expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a woodchuck could ch    wood?');
     });
 
     it('make sure nothing is erased if empty string is passed', function() {
