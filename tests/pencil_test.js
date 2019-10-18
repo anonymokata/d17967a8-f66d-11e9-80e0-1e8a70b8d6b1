@@ -51,6 +51,8 @@ describe('PencilTests', function() {
         Paper.set_contents("How much wood, would a woodchuck chuck, if a woodchuck could chuck wood?");
         Paper.set_contents(Pencil.erase(Paper.get_contents(),'chuck'));
         expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a woodchuck could       wood?');
+        Paper.set_contents(Pencil.erase(Paper.get_contents(),'chuck'));
+        expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a wood      could       wood?');
     });
 
 });
