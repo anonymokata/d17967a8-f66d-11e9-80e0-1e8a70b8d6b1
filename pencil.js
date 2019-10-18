@@ -69,11 +69,17 @@ class Pencil {
     }
 
     get_durable_characters_to_erase(characters_to_erase) {
-        let characters = '';
-        if (this.eraser_durability > 0 && characters_to_erase.length > this.eraser_durability) {
-            characters = characters_to_erase.substr(-this.eraser_durability);
+        if (this.eraser_durability > 0 ) {
+            if ( characters_to_erase.length > this.eraser_durability) {
+                characters_to_erase = characters_to_erase.substr(-this.eraser_durability);
+                this.eraser_durability = 0;
+            } else {
+                this.eraser_durability -= characters_to_erase.length;
+            }
+        } else {
+            characters_to_erase = '';
         }
-        return characters;
+        return characters_to_erase;
     }
 }
 
