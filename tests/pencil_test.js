@@ -18,4 +18,11 @@ describe('PencilTests', function() {
         Paper.set_contents(Paper.get_contents() + Pencil.write('Test'));
         expect(Paper.get_contents()).to.eql('Tes');
     });
+
+    it('handle degradation of pencil with space or return characters', function() {
+        Paper.set_contents('');
+        Pencil.set_durability(16);
+        Paper.set_contents(Paper.get_contents() + Pencil.write('Test Green\r\nRefactor'));
+        expect(Paper.get_contents()).to.eql('Test Green\r\nRefa');
+    });
 });
