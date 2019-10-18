@@ -26,5 +26,16 @@ describe('PencilTests', function() {
         expect(Paper.get_contents()).to.eql('Test Green\r\nRefa');
     });
 
+    it('sharpen durability back to original state', function() {
+        Pencil.set_durability(55);
+        let text_to_write = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        Paper.set_contents(Paper.get_contents() + Pencil.write(text_to_write));
+        expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do');
+        Pencil.sharpen();
+        Paper.set_contents(Paper.get_contents() + Pencil.write(text_to_write.substring(Paper.get_contents().length)));
+        expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+
+    })
+
 
 });

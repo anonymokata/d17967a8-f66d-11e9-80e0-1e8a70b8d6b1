@@ -26,7 +26,11 @@ class Pencil {
     }
 
     set_durability(durability) {
-        this.durability = durability;
+        this.durability = this.original_durability = durability;
+    }
+
+    sharpen() {
+        this.durability = this.original_durability;
     }
 }
 
