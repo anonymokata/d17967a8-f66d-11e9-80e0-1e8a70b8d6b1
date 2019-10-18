@@ -32,15 +32,18 @@ describe('PencilTests', function() {
         let text_to_write = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
         Paper.append_content(Pencil.write(text_to_write));
         expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consec');
-        Pencil.sharpen();
-        Paper.append_content(Pencil.write(text_to_write.substring(Paper.get_contents().length)));
-        expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm');
-        Pencil.sharpen();
-        Paper.append_content(Pencil.write(text_to_write.substring(Paper.get_contents().length)));
-        expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do');
-        Pencil.sharpen();
-        Paper.append_content(Pencil.write(text_to_write.substring(Paper.get_contents().length)));
-        expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do');
+        for (sharpen_iterator = Pencil.length; sharpen_iterator >= 0; sharpen_iterator-- ){
+            Pencil.sharpen();
+            Paper.append_content(Pencil.write_after_sharpen(text_to_write, Paper.get_contents()));
+            switch(sharpen_iterator) {
+                case 2:
+                    expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm');
+                    break
+                case 1:
+                case 0:
+                    expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do');
+            }
+        }
     });
 
 

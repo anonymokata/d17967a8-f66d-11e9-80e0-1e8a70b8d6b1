@@ -6,8 +6,13 @@ class Pencil {
         let original_durability = 0;
         let length = 0;
     }
+
     write (characters) {
         return this.get_durable_characters(characters);
+    }
+
+    write_after_sharpen (full_characters, current_content) {
+        return this.write(full_characters.substring(current_content.length));
     }
 
     get_durable_characters(characters) {
