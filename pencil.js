@@ -3,6 +3,8 @@
 class Pencil {
     constructor () {
         let durability = 0;
+        let original_durability = 0;
+        let length = 0;
     }
     write (characters) {
         return this.get_durable_characters(characters);
@@ -29,8 +31,15 @@ class Pencil {
         this.durability = this.original_durability = durability;
     }
 
+    set_length(length) {
+        this.length =  length;
+    }
+
     sharpen() {
-        this.durability = this.original_durability;
+        if (this.length > 0) {
+            this.durability = this.original_durability;
+        }
+        this.length--;
     }
 }
 
