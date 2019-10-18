@@ -6,7 +6,7 @@ var Paper = require('../paper.js');
 describe('PencilTests', function() {
     beforeEach( function() {
         Paper.set_contents('');
-    })
+    });
 
     it('handle degradation of pencil with lower case characters', function() {
         Pencil.set_durability(4);
@@ -34,7 +34,6 @@ describe('PencilTests', function() {
         Pencil.sharpen();
         Paper.set_contents(Paper.get_contents() + Pencil.write(text_to_write.substring(Paper.get_contents().length)));
         expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
-
     })
 
 
