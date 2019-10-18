@@ -46,6 +46,21 @@ class Pencil {
         }
         this.length--;
     }
+
+    erase(contents, characters_to_erase) {
+        let characters_location = contents.lastIndexOf(characters_to_erase);
+        let characters_length = characters_to_erase.length;
+        let spaces_to_add = '';
+        let i;
+        if ( characters_length > 0 && characters_location >= 0 ) {
+            for ( i = 0; i < characters_length; i++) {
+                spaces_to_add += ' ';
+            }
+
+            contents = contents.substring(0,characters_location) + spaces_to_add + contents.substring(characters_location + characters_length);
+        }
+        return contents;
+    }
 }
 
 pencil = new Pencil();

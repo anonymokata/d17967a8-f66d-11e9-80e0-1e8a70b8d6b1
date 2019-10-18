@@ -32,7 +32,7 @@ describe('PencilTests', function() {
         let text_to_write = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
         Paper.append_content(Pencil.write(text_to_write));
         expect(Paper.get_contents()).to.eql('Lorem ipsum dolor sit amet, consec');
-        for (sharpen_iterator = Pencil.length; sharpen_iterator >= 0; sharpen_iterator-- ){
+        for (sharpen_iterator = Pencil.length; sharpen_iterator >= 0; sharpen_iterator-- ) {
             Pencil.sharpen();
             Paper.append_content(Pencil.write_after_sharpen(text_to_write, Paper.get_contents()));
             switch(sharpen_iterator) {
@@ -45,6 +45,12 @@ describe('PencilTests', function() {
                     break;
             }
         }
+    });
+
+    it('erases last occurrence of found character from paper, multiple times', function() {
+        Paper.set_contents("How much wood, would a woodchuck chuck, if a woodchuck could chuck wood?");
+        Paper.set_contents(Pencil.erase(Paper.get_contents(),'chuck'));
+        expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a woodchuck could       wood?');
     });
 
 });
