@@ -61,4 +61,10 @@ describe('PencilTests', function() {
         expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a woodchuck could chuck wood?');
     });
 
+    it('make sure nothing is erased if string that is passed is not found', function() {
+        Paper.set_contents("How much wood, would a woodchuck chuck, if a woodchuck could chuck wood?");
+        Paper.set_contents(Pencil.erase(Paper.get_contents(),'chuckk'));
+        expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a woodchuck could chuck wood?');
+    });
+
 });
