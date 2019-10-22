@@ -77,4 +77,11 @@ describe('PencilTests', function() {
         expect(Paper.get_contents()).to.eql('How much wood, would a woodchuck chuck, if a woodchuck could chuck wood?');
     });
 
+    it('editing test, pencil is able to write over spaces', function () {
+        Paper.set_contents("An       a day keeps the doctor away");
+        Paper.set_contents(Pencil.edit_paper(Paper.get_contents(), 'onion', 3));
+        expect(Paper.get_contents()).to.eql('An onion a day keeps the doctor away');
+
+    });
+
 });

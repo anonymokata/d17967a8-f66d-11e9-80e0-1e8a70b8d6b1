@@ -81,6 +81,10 @@ class Pencil {
         }
         return characters_to_erase;
     }
+
+    edit_paper(paper, write_content, start_location) {
+        return paper.substr(0, start_location) + write_content + paper.substr(write_content.length + start_location);
+    }
 }
 
 pencil = new Pencil();
