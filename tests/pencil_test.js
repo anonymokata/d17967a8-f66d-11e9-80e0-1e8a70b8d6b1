@@ -81,7 +81,12 @@ describe('PencilTests', function() {
         Paper.set_contents("An       a day keeps the doctor away");
         Paper.set_contents(Pencil.edit_paper(Paper.get_contents(), 'onion', 3));
         expect(Paper.get_contents()).to.eql('An onion a day keeps the doctor away');
+    });
 
+    it('editing test, handling writing over where characters exist and replacing them with an at symbol', function () {
+        Paper.set_contents("An       a day keeps the doctor away");
+        Paper.set_contents(Pencil.edit_paper(Paper.get_contents(), 'artichoke', 3));
+        expect(Paper.get_contents()).to.eql('An artich@k@ay keeps the doctor away');
     });
 
 });

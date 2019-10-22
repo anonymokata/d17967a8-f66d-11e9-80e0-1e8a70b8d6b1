@@ -83,7 +83,23 @@ class Pencil {
     }
 
     edit_paper(paper, write_content, start_location) {
-        return paper.substr(0, start_location) + write_content + paper.substr(write_content.length + start_location);
+        let overlapping_string = paper.substr(start_location, write_content.length);
+        let replacing_content = '';
+
+        if ( overlapping_string.search(/[^\s]/) >= 0 ) {
+            let increment;
+            for ( increment = 0; increment < write_content.length; increment++) {
+                if ( overlapping_string[increment] == ' ' ) {
+                    replacing_content += write_content[increment];
+                } else {
+                    replacing_content += '@';
+                }
+            }
+        } else {
+            replacing_content = write_content;
+        }
+
+        return paper.substr(0, start_location) + replacing_content + paper.substr(write_content.length + start_location);
     }
 }
 
