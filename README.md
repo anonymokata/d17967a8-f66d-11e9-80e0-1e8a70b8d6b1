@@ -19,3 +19,7 @@ Once NodeJS is installed, install Mocha and Chai from the command prompt
 From the directory you've checkout the repository to run :
 
 `npm install --save chai`
+
+## Running test
+
+From the project root run `mocha tests/pencil_test.js` in the terminal/command prompt
